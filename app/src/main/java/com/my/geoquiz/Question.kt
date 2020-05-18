@@ -1,5 +1,5 @@
 package com.my.geoquiz
 
-class Question(textResId: Int, answerTrue: Boolean) {
+class Question(val textResId: Int, val answerTrue: Boolean) {
 
 }
