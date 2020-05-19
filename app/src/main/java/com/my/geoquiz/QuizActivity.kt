@@ -2,13 +2,13 @@ package com.my.geoquiz
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 
 
 class QuizActivity : AppCompatActivity() {
+
         var currentIndex :Int      = 0
         var trueButton   :Button?  = null
         var falseButton  :Button?  = null
@@ -39,7 +39,7 @@ class QuizActivity : AppCompatActivity() {
         }
 
         prevousButton = findViewById(R.id.previous_button)
-        nextButton?.setOnClickListener {
+        prevousButton?.setOnClickListener {
             currentIndex = (currentIndex + (questionBank.size - 1)) % questionBank.size
             updateQuestion()
         }
@@ -71,7 +71,9 @@ class QuizActivity : AppCompatActivity() {
                 R.string.incorrect_toast,
                 Toast.LENGTH_SHORT);
         }
+
         toast.show()
     }
+
 }
 
