@@ -3,6 +3,7 @@ package com.my.geoquiz
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 
@@ -12,8 +13,8 @@ class QuizActivity : AppCompatActivity() {
         var currentIndex :Int      = 0
         var trueButton   :Button?  = null
         var falseButton  :Button?  = null
-        var nextButton   :Button?  = null
-        var prevousButton:Button? = null
+        var nextButton   :ImageButton?  = null
+        var prevousButton:ImageButton? = null
 
         private val questionBank = arrayOf(
             Question(R.string.question_Australia, true),
@@ -37,6 +38,8 @@ class QuizActivity : AppCompatActivity() {
         falseButton?.setOnClickListener {
             isAnswerRight(false)
         }
+
+        println("!!!!!!!!!!!!!!!"+R.id.previous_button)
 
         prevousButton = findViewById(R.id.previous_button)
         prevousButton?.setOnClickListener {
