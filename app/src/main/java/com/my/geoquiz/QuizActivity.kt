@@ -2,6 +2,7 @@ package com.my.geoquiz
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
@@ -9,7 +10,10 @@ import android.widget.Toast
 
 
 class QuizActivity : AppCompatActivity() {
-
+    companion object {
+        val KEY_INDEX = "index"
+        val TAG = "QuizActivity"
+    }
         var currentIndex :Int      = 0
         var trueButton   :Button?  = null
         var falseButton  :Button?  = null
@@ -26,6 +30,11 @@ class QuizActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.d(TAG,"onCreate(Bundle) called")
+
+        if (savedInstanceState != null) {
+            currentIndex = savedInstanceState.getInt(KEY_INDEX, 0)
+        }
 
         updateQuestion()
 
@@ -38,8 +47,6 @@ class QuizActivity : AppCompatActivity() {
         falseButton?.setOnClickListener {
             isAnswerRight(false)
         }
-
-        println("!!!!!!!!!!!!!!!"+R.id.previous_button)
 
         prevousButton = findViewById(R.id.previous_button)
         prevousButton?.setOnClickListener {
@@ -76,6 +83,12 @@ class QuizActivity : AppCompatActivity() {
         }
 
         toast.show()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.i(TAG, "onSaveInstanceState")
+        outState.putInt(KEY_INDEX, currentIndex)
     }
 
 }
